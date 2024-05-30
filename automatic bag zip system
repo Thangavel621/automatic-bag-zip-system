@@ -1,0 +1,42 @@
+#include <Servo.h>
+
+// Define the Servo object
+Servo zipServo;
+
+// Define the pin connected to the servo signal wire
+const int servoPin = D4;
+
+// Define the servo positions
+const int zipOpenPosition = 0; // Adjust based on your setup
+const int zipClosePosition = 180; // Adjust based on your setup
+
+void setup() {
+  // Initialize the servo on the defined pin
+  zipServo.attach(servoPin);
+
+  // Start with the zip in the open position
+  zipServo.write(zipOpenPosition);
+
+  // Serial monitor for debugging
+  Serial.begin(115200);
+  Serial.println("Automatic Bag Zip Closing System");
+}
+
+void loop() {
+  // Placeholder for the main logic
+  // This can be a button press, a sensor trigger, or a time-based action
+  // For demonstration, we'll use a simple delay-based approach
+
+  // Close the zip after 5 seconds
+  delay(5000);
+  Serial.println("Closing the zip...");
+  zipServo.write(zipClosePosition);
+
+  // Keep the zip closed for 5 seconds
+  delay(5000);
+  Serial.println("Opening the zip...");
+  zipServo.write(zipOpenPosition);
+
+  // Keep the zip open for 5 seconds
+  delay(5000);
+}
